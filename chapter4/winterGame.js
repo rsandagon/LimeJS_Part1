@@ -7,6 +7,7 @@ goog.require('lime.Scene');
 goog.require('lime.Layer');
 goog.require('lime.fill.LinearGradient');
 goog.require('winter.Snowman');
+goog.require('winter.Snow');
 goog.require('winter.Sky');
 
 
@@ -17,6 +18,8 @@ winterGame.start = function(){
     director.makeMobileWebAppCapable();
     director.setDisplayFPS(true);
     
+    goog.exportSymbol('winterGame.start', winterGame.start);
+    
     var scene = new lime.Scene();
     var skyLayer = new lime.Layer();
     var gameLayer = new lime.Layer();
@@ -26,22 +29,30 @@ winterGame.start = function(){
     skyLayer.appendChild(sky);
     
     // walking snowman
-    var snowman = new winter.Snowman().setPosition(300,300);
+    var snowman = new winter.Snowman();
     gameLayer.appendChild(snowman);
         
-    // generate cloud ??
-    
-    // generate snow ??
-    
-    
     // append layers
     scene.appendChild(skyLayer);
     scene.appendChild(gameLayer);
     
-    // intigame
+    // initgame
     snowman.walk();
     
+    // generate cloud ??
+    
     //not sure how to separate the controller..this is interesting..
+    var throwSnow = function(e){
+        e.event.stopPropagation(); 
+        console.log("throw snow called");
+        
+        //create snow here
+        var snow = new winter.Snow().setPosition(400,640);
+        gameLayer.appendChild(snow);
+        snow.throwSnow(e.position);
+    }
+    
+    goog.events.listen(scene, ['mousedown', 'touchstart'], throwSnow);
     
     director.replaceScene(scene);
 }
