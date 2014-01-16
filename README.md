@@ -1,4 +1,4 @@
-LimeJS_Part1
+Creating an HTML5 Game Using LimeJS 
 ============
 
 This is a basic study of limejs in support to http://rsandagon.com/html5-game-project-using-limejs/
