@@ -15,5 +15,6 @@ winter.Sky = function(){
             .addColorStop(1,'#FFFFFF');
     
     this.setSize(800,640).setPosition(0,0).setAnchorPoint(0,0).setFill(sky_gradient);
-}
+};
+
 goog.inherits(winter.Sky, lime.Sprite);

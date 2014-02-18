@@ -6,6 +6,7 @@ goog.require('lime.Director');
 goog.require('lime.Scene');
 goog.require('lime.Layer');
 goog.require('lime.fill.LinearGradient');
+goog.require('lime.Renderer');
 goog.require('winter.Snowman');
 goog.require('winter.Snow');
 goog.require('winter.Sky');
@@ -50,9 +51,11 @@ winterGame.start = function(){
         var snow = new winter.Snow().setPosition(400,640);
         gameLayer.appendChild(snow);
         snow.throwSnow(e.position);
-    }
+        
+        snowman.blink();
+    };
     
     goog.events.listen(scene, ['mousedown', 'touchstart'], throwSnow);
     
     director.replaceScene(scene);
-}
+};
